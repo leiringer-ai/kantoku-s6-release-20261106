@@ -1,5 +1,9 @@
+<<<<<<< f8ceaf65b34bb511cfedf9e9418212c5d25358cd
 <<<<<<< 7a354ea0140522dd47a0cfe36eb53e1b68240029
 {"features": ["lines"]}
 =======
 {"features": ["median"]}
 >>>>>>> 19a2bdf0f51306426b13f14c8b6f25cf622e087d
+=======
+{"features": ["mean", "median", "lines"]}
+>>>>>>> 638d7f5e39e4cc7048e1cad6e5cc13d6ac75490e
