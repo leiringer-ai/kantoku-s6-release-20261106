@@ -1,4 +1,5 @@
 import json, math, unittest
+from fractions import Fraction
 from stats import mean
 
 class MeanTests(unittest.TestCase):
@@ -38,3 +39,13 @@ class MeanTests(unittest.TestCase):
         large = 10 ** 400
         self.assertEqual(mean([large, large]), large)
         self.assertEqual(mean([large, -large, 3]), 1)
+
+    def test_large_mixed_mean(self):
+        large = 10 ** 400
+        self.assertEqual(mean([large, 0.0]), large // 2)
+        self.assertEqual(mean([-large, 0.0]), -large // 2)
+
+    def test_large_fractional_mean(self):
+        large = 10 ** 400
+        self.assertEqual(mean([large, 1]), Fraction(large + 1, 2))
+        self.assertEqual(mean([large, 0.5]), Fraction(2 * large + 1, 4))
