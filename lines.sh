@@ -5,8 +5,12 @@ if [ "$#" -ne 0 ]; then
   exit 2
 fi
 
-count=0
-while IFS= read -r line || [ -n "$line" ]; do
-  count=$((count + 1))
-done
-printf '%s\n' "$count"
+# Shell read may discard NUL bytes. Replace them with a non-newline byte so
+# even a NUL-only final unterminated line remains nonempty.
+LC_ALL=C tr '\000' 'x' | {
+  count=0
+  while IFS= read -r line || [ -n "$line" ]; do
+    count=$((count + 1))
+  done
+  printf '%s\n' "$count"
+}
