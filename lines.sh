@@ -1,2 +1,12 @@
 #!/bin/sh
-printf "0\n"
+
+if [ "$#" -ne 0 ]; then
+  printf '%s\n' 'Usage: lines.sh < input (no arguments accepted)' >&2
+  exit 2
+fi
+
+count=0
+while IFS= read -r line || [ -n "$line" ]; do
+  count=$((count + 1))
+done
+printf '%s\n' "$count"
