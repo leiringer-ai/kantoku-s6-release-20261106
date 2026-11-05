@@ -1,0 +1,12 @@
+[tools]
+python = "3.13.17"
+node = "22.14.0"
+
+[tasks.test]
+run = "sh tests/all.sh"
+[tasks.test-python]
+run = "python3 -m unittest discover -s tests -p test_stats.py -v"
+[tasks.test-javascript]
+run = "node --test tests/median.test.cjs"
+[tasks.test-shell]
+run = "sh tests/lines.sh"
